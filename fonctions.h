@@ -8,9 +8,9 @@
 #endif //PROJET_IMAGE_VECTORIELLE_FONCTIONS_H
 
 typedef struct {
-    int pos_x:
+    int pos_x;
     int pos_y;
-}; Point;
+} Point;
 
 Point * create_point(int x,int y);
 void delete_point(Point * p);

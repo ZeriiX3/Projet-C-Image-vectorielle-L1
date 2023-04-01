@@ -3,17 +3,21 @@
 //
 
 #include "fonctions.h"
+#include "stdio.h"
+#include "stdlib.h"
 
-Point * create_point(int x,int x){
+Point * create_point(int px,int py){
     Point * p = (Point *)malloc(sizeof(Point));
+    p->pos_x = px;
+    p->pos_y = py;
 
     return p;
 }
 
-void delete(Point * p){
+void delete_point(Point * p){
     free(p);
 }
 
 void print_point(Point * p){
-    printf("%d %d",);
+    printf("%d %d",p->pos_x, p->pos_y);
 }

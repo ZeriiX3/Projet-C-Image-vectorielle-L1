@@ -3,6 +3,7 @@
 //
 
 #include "shapes.h"
+
 #include "stdio.h"
 #include "stdlib.h"
 
@@ -78,7 +79,6 @@ void delete_square(Square * square) {
 
 
 
-
 // Structure Rectangle - FONCTIONS
 
 
@@ -100,4 +100,55 @@ void print_rectangle(Rectangle * rectangle) {
            rectangle->topleft->pos_x,rectangle->topleft->pos_y + rectangle->length);
     printf("           (%d, %d),(%d, %d)]\n", rectangle->topleft->pos_x + rectangle->width, rectangle->topleft->pos_y,
            rectangle->topleft->pos_x + rectangle->width,rectangle->topleft->pos_y + rectangle->length);
+}
+
+
+
+// Structure Rectangle - FONCTION
+
+Circle *create_circle(Point * center, int radius) {
+    Circle *circle = (Circle *) malloc(sizeof(Circle));
+    circle->center = center;
+    circle->radius = radius;
+    return circle;
+}
+
+void delete_circle(Circle * circle) {
+    free(circle->center);
+    free(circle);
+}
+
+void print_circle(Circle * circle) {
+    printf("CIRCLE [center (%d, %d) with radius (%d)]\n",circle->center->pos_x,circle->center->pos_y,circle->radius);
+}
+
+
+
+// Structure Polygon - FONCTION
+
+Polygon *create_polygon(int n) {
+    Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));
+    polygon->n = n;
+
+    for (int i = 0; i < n; i++) {
+        polygon->points[i];
+    }
+
+    return polygon;
+}
+
+void delete_polygon(Polygon * polygon) {
+
+    for (int i = 0; i < polygon->n; i++) {
+        free(polygon->points[i]);
+    }
+    free(polygon);
+}
+
+void print_polygon(Polygon * polygon) {
+
+    printf("POLYGON ");
+    for (int i = 0; i < polygon->n; i++) {
+        printf("(%d, %d) ",polygon->points[i]->pos_x,polygon->points[i]->pos_y);
+    }
 }

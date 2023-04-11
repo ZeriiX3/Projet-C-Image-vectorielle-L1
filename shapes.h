@@ -14,7 +14,7 @@
 
 // Structure Point
 
-typedef struct point{
+typedef struct {
     int pos_x;
     int pos_y;
 }Point;
@@ -26,7 +26,7 @@ void print_point(Point * p);
 
 // Structure Line
 
-typedef struct line {
+typedef struct {
     Point *pt1;
     Point *pt2;
 }Line;
@@ -38,7 +38,7 @@ void print_line(Line * line);
 
 // Structure Square
 
-typedef struct square {
+typedef struct {
     Point *topleft;
     int length;
 }Square;
@@ -50,7 +50,7 @@ void print_square(Square * square);
 
 // Structure Rectangle
 
-typedef struct rectangle {
+typedef struct {
     Point *topleft;
     int length;
     int width;
@@ -59,3 +59,32 @@ typedef struct rectangle {
 Rectangle *create_rectangle(Point * point, int length, int width);
 void delete_rectangle(Rectangle * rectangle);
 void print_rectangle(Rectangle * rectangle);
+
+
+// Structure Cercle
+
+typedef struct {
+    Point *center;
+    int radius;
+}Circle;
+
+Circle *create_circle(Point * center, int radius);
+void delete_circle(Circle * circle);
+void print_circle(Circle * circle);
+
+
+
+// Structure Polygon
+
+typedef struct polygon {
+    int n;
+    Point ** points; // tableau 1D dynamique de Point*
+}Polygon;
+
+Polygon *create_polygon(int n);
+void delete_polygon(Polygon * polygon);
+void print_polygon(Polygon * polygon);
+
+
+
+

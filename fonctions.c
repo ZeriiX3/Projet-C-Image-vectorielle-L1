@@ -40,6 +40,7 @@ void add_point() {
     printf("Saisir les informations du point :\n");
     printf(">> Saisir les coordonnees x y : ");
     scanf("%d %d",&px, &py);
+
     Point * p = create_point (px, py);
     printf("Votre point a ete ajoute !\n");
 }
@@ -51,19 +52,49 @@ void add_line() {
     scanf("%d %d",&px1, &py1);
     printf(">> Saisir les coordonnees deuxieme point x2 y2 : ");
     scanf("%d %d",&px2, &py2);
+
     Point * p1 = create_point (px1, py1);
     Point * p2 = create_point (px2, py2);
     printf("Votre ligne a ete ajoute !\n");
 }
 
 void add_square() {
-    int p1, p2, length;
+    int px, py, length;
     printf("Saisir les informations pour le cube :\n");
-    printf(">> Saisir les coordonnees du point x1 y1 : ");
-    scanf("%d %d",&p1, &p2);
+    printf(">> Saisir les coordonnees du point x y : ");
+    scanf("%d %d",&px, &py);
     printf(">> Saisir la longueur des cotes du cube : ");
     scanf("%d",&length);
-    Point * p = create_point(p1,p2);
+
+    Point * p = create_point(px,py);
     Square * s = create_square(p, length);
     printf("Votre cube a ete ajoute !\n");
+}
+
+void add_rectangle() {
+    int px, py, length, width;
+    printf("Saisir les informations pour le rectangle :\n");
+    printf(">> Saisir les coordonnees du point x y : ");
+    scanf("%d %d",&px, &py);
+    printf(">> Saisir la longueur du rectangle : ");
+    scanf("%d",&length);
+    printf(">> Saisir la largeur du rectangle : ");
+    scanf("%d",&width);
+
+    Point * p = create_point(px,py);
+    Rectangle * r = create_rectangle(p, length, width);
+    printf("Votre rectangle a ete ajoute !\n");
+}
+
+void add_cercle() {
+    int px, py, radius;
+    printf("Saisir les informations pour le cercle :\n");
+    printf(">> Saisir le point centre x y : ");
+    scanf("%d %d",&px, &py);
+    printf(">>Saisir le rayon du cercle : ");
+    scanf("%d",&radius);
+
+    Point * p = create_point(px,py);
+    Circle * c = create_circle(p,radius);
+    printf("Votre rectangle a ete ajoute !\n");
 }

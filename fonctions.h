@@ -15,6 +15,9 @@ void menu_A();
 void add_point();
 void add_line();
 void add_square();
+void add_rectangle();
+void add_cercle();
+
 
 
 

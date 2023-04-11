@@ -12,7 +12,7 @@ int main() {
     switch (choix_action) {
 
 
-        case 'A': {
+        case 'A': {         // Ajouter une forme
 
             menu_A();
             scanf(" %c", &choix_forme);
@@ -31,9 +31,11 @@ int main() {
                     break;
                 }
                 case '4': {
+                    add_rectangle();
                     break; //rectangle
                 }
                 case '5': {
+                    add_cercle();
                     break; // cercle
                 }
                 case '6': {
@@ -43,18 +45,41 @@ int main() {
                     break; // retourner au menu precedent
                 }
                 default :
-                    printf("Ce numero n'existe pas");
+                    printf("Ce numero n'existe pas\n");
             }
             break;
         }
 
 
-        case 'B': {
-            printf("Liste des formes");
+        case 'B': {     // Afficher la liste des formes
+
+            printf("Liste des formes\n");
             break;
         }
+
+
+        case 'C' : {     // Suprimmer une forme de la liste
+
+            printf("Veuillez selectionner la forme a supprimer : \n");
+            break;
+        }
+
+
+        case 'D' : {    // Tracer le dessin
+
+            printf("Voici le dessin demande\n");
+            break;
+        }
+
+
+        case 'E' : {
+
+            printf("Voici la liste des aides qui pourrait vous etre utiles : \n");
+            break;
+        }
+
         default:
-            printf("Cette lettre n'existe pas");
+            printf("Cette lettre n'existe pas\n");
     }
 
 

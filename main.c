@@ -5,84 +5,94 @@
 
 int main() {
 
-    main_menu();
     char choix_action, choix_forme;
-    scanf(" %c", &choix_action);
 
-    switch (choix_action) {
+    do {
+        main_menu();
+        scanf(" %c", &choix_action);
+
+        switch (choix_action) {
 
 
-        case 'A': {         // Ajouter une forme
+            case 'A': {         // Ajouter une forme
 
-            menu_A();
-            scanf(" %c", &choix_forme);
+                do {
+                    menu_A();
+                    scanf(" %c", &choix_forme);
 
-            switch (choix_forme) {
-                case '1': {
-                    add_point();
-                    break;
-                }
-                case '2': {
-                    add_line();
-                    break;
-                }
-                case '3': {
-                    add_square();
-                    break;
-                }
-                case '4': {
-                    add_rectangle();
-                    break; //rectangle
-                }
-                case '5': {
-                    add_cercle();
-                    break; // cercle
-                }
-                case '6': {
-                    break; // polygon
-                }
-                case '7': {
-                    break; // retourner au menu precedent
-                }
-                default :
-                    printf("Ce numero n'existe pas\n");
+                    switch (choix_forme) {
+
+                        case '1': {
+                            add_point();
+                            break;
+                        }
+                        case '2': {
+                            add_line();
+                            break;
+                        }
+                        case '3': {
+                            add_square();
+                            break;
+                        }
+                        case '4': {
+                            add_rectangle();
+                            break;
+                        }
+                        case '5': {
+                            add_cercle();
+                            break;
+                        }
+                        case '6': {
+                            break; // polygon
+                        }
+                        case '7': {
+                            break; // retourner au menu precedent
+                        }
+                        default:
+                            printf("Ce chiffre correspond a aucun menu");
+                    }
+
+                } while (choix_forme != '7');
             }
-            break;
+
+
+            case 'B': {     // Afficher la liste des formes
+
+                printf("Liste des formes\n");
+                break;
+            }
+
+
+            case 'C' : {     // Suprimmer une forme de la liste
+
+                printf("Veuillez selectionner la forme a supprimer : \n");
+                break;
+            }
+
+
+            case 'D' : {    // Tracer le dessin
+
+                printf("Voici le dessin demande\n");
+                break;
+            }
+
+
+            case 'E' : {
+
+                printf("Voici la liste des aides qui pourrait vous etre utiles : \n");
+                break;
+            }
+
+
+            case 'F' : {
+                break;
+            }
+
+            default:
+                printf("Cette lettre n'existe pas\n");
         }
 
-
-        case 'B': {     // Afficher la liste des formes
-
-            printf("Liste des formes\n");
-            break;
-        }
-
-
-        case 'C' : {     // Suprimmer une forme de la liste
-
-            printf("Veuillez selectionner la forme a supprimer : \n");
-            break;
-        }
-
-
-        case 'D' : {    // Tracer le dessin
-
-            printf("Voici le dessin demande\n");
-            break;
-        }
-
-
-        case 'E' : {
-
-            printf("Voici la liste des aides qui pourrait vous etre utiles : \n");
-            break;
-        }
-
-        default:
-            printf("Cette lettre n'existe pas\n");
-    }
-
-
+    }while (choix_action != 'F');
 
     /*
     printf("Liste des formes :\n");

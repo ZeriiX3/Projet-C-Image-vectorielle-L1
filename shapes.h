@@ -92,7 +92,7 @@ void print_polygon(Polygon * polygon);
 
 
 
-typedef enum { POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON} SHAPE_TYPE;
+typedef enum { POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON } SHAPE_TYPE;
 
 typedef struct shape {
     int id;     // identifiant unique de la forme

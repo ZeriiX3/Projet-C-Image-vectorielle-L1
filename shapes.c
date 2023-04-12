@@ -152,3 +152,36 @@ void print_polygon(Polygon * polygon) {
         printf("(%d, %d) ",polygon->points[i]->pos_x,polygon->points[i]->pos_y);
     }
 }
+
+
+
+// ----------------- SHAPES ----------------- //
+
+
+
+Shape *create_empty_shape(SHAPE_TYPE shape_type) {
+    Shape *shp = (Shape *) malloc(sizeof(Shape));
+    shp->id = 1; // plus tard on appelera get_next_id();
+    shp->shape_type = shape_type;
+    shp->ptrShape = NULL;
+    return shp;
+}
+
+Shape *create_point_shape(int px, int py) {
+
+    Shape *shp = create_empty_shape(POINT);
+    Point *p = create_point(px, py);
+    shp->ptrShape = p;
+    return shp;
+
+}
+
+Shape *create_line_shape(int px1, int py1, int px2, int py2){
+    Shape *shp = create_empty_shape(LINE);
+    Point * p1 = create_point (px1, py1);
+    Point * p2 = create_point (px2, py2);
+    Line * l = create_line(p1,p2);
+    shp->ptrShape = l;
+    return shp;
+
+}

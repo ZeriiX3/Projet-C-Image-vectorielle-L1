@@ -19,6 +19,7 @@ void main_menu() {
     printf("    C- Supprimer une forme de la liste\n");
     printf("    D- Tracer le dessin\n");
     printf("    E- Aide\n");
+    printf("    F - Quitter le programme\n");
     printf(">> Votre choix : ");
 }
 
@@ -41,7 +42,6 @@ void add_point() {
     printf(">> Saisir les coordonnees x y : ");
     scanf("%d %d",&px, &py);
 
-    Point * p = create_point (px, py);
     printf("Votre point a ete ajoute !\n");
 }
 
@@ -53,8 +53,6 @@ void add_line() {
     printf(">> Saisir les coordonnees deuxieme point x2 y2 : ");
     scanf("%d %d",&px2, &py2);
 
-    Point * p1 = create_point (px1, py1);
-    Point * p2 = create_point (px2, py2);
     printf("Votre ligne a ete ajoute !\n");
 }
 

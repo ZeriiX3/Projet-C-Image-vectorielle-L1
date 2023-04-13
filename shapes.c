@@ -3,7 +3,7 @@
 //
 
 #include "shapes.h"
-
+#include "id.h"
 #include "stdio.h"
 #include "stdlib.h"
 
@@ -161,7 +161,7 @@ void print_polygon(Polygon * polygon) {
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
     Shape *shp = (Shape *) malloc(sizeof(Shape));
-    shp->id = 1; // plus tard on appelera get_next_id();
+    shp->id = get_next_id(); // plus tard on appelera get_next_id();
     shp->shape_type = shape_type;
     shp->ptrShape = NULL;
     return shp;
@@ -173,7 +173,6 @@ Shape *create_point_shape(int px, int py) {
     Point *p = create_point(px, py);
     shp->ptrShape = p;
     return shp;
-
 }
 
 Shape *create_line_shape(int px1, int py1, int px2, int py2){
@@ -183,5 +182,114 @@ Shape *create_line_shape(int px1, int py1, int px2, int py2){
     Line * l = create_line(p1,p2);
     shp->ptrShape = l;
     return shp;
+}
 
+
+Shape *create_square_shape(int px, int py, int length) {
+    Shape *shp = create_empty_shape(SQUARE);
+    Point * p = create_point(px,py);
+    Square * s = create_square(p, length);
+    shp->ptrShape = s;
+    return shp;
+}
+
+Shape *create_rectangle_shape(int px, int py, int length, int width) {
+    Shape *shp = create_empty_shape(RECTANGLE);
+    Point * p = create_point(px,py);
+    Rectangle * r = create_rectangle(p, length, width);
+
+    shp->ptrShape = r;
+    return shp;
+}
+
+Shape *create_circle_shape(int px, int py, int radius) {
+    Shape *shp = create_empty_shape(CIRCLE);
+    Point * p = create_point(px,py);
+    Circle * c = create_circle(p,radius);
+
+    shp->ptrShape = c;
+    return shp;
+}
+
+
+/*
+Shape *create_polygon_shape(int lst[], int n) {
+    Shape *shp = create_empty_shape(POLYGON);
+
+    shp->ptrShape = poly;
+    return shp;
+} */
+
+
+void delete_shape(Shape *shape) {
+
+    switch (shape->shape_type) {
+        case POINT: {
+            delete_point((Point *)shape->ptrShape);
+            break;
+        }
+
+        case LINE: {
+            delete_line((Line *)shape->ptrShape);
+            break;
+        }
+
+        case SQUARE: {
+            delete_square((Square *)shape->ptrShape);
+            break;
+        }
+
+        case RECTANGLE: {
+            delete_rectangle((Rectangle *)shape->ptrShape);
+            break;
+        }
+
+        case CIRCLE: {
+            delete_circle((Circle *)shape->ptrShape);
+            break;
+        }
+
+        case POLYGON: {
+            delete_polygon((Polygon *)shape->ptrShape);
+            break;
+        }
+    }
+    free(shape);
+}
+
+
+void print_shape(Shape * shape) {
+
+    printf("%d : ", shape->id);
+    switch (shape->shape_type) {
+        case POINT: {
+            print_point((Point *)shape->ptrShape);
+            break;
+        }
+
+        case LINE: {
+            print_line((Line *)shape->ptrShape);
+            break;
+        }
+
+        case SQUARE: {
+            print_square((Square *)shape->ptrShape);
+            break;
+        }
+
+        case RECTANGLE: {
+            print_rectangle((Rectangle *)shape->ptrShape);
+            break;
+        }
+
+        case CIRCLE: {
+            print_circle((Circle *)shape->ptrShape);
+            break;
+        }
+
+        case POLYGON: {
+            print_polygon((Polygon *)shape->ptrShape);
+            break;
+        }
+    }
 }

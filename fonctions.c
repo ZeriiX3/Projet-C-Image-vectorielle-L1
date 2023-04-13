@@ -64,8 +64,7 @@ void add_square() {
     printf(">> Saisir la longueur des cotes du cube : ");
     scanf("%d",&length);
 
-    Point * p = create_point(px,py);
-    Square * s = create_square(p, length);
+
     printf("Votre cube a ete ajoute !\n");
 }
 
@@ -79,8 +78,7 @@ void add_rectangle() {
     printf(">> Saisir la largeur du rectangle : ");
     scanf("%d",&width);
 
-    Point * p = create_point(px,py);
-    Rectangle * r = create_rectangle(p, length, width);
+
     printf("Votre rectangle a ete ajoute !\n");
 }
 
@@ -92,7 +90,6 @@ void add_cercle() {
     printf(">>Saisir le rayon du cercle : ");
     scanf("%d",&radius);
 
-    Point * p = create_point(px,py);
-    Circle * c = create_circle(p,radius);
+
     printf("Votre rectangle a ete ajoute !\n");
 }

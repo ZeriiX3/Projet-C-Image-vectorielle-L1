@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "shapes.h"
 #include "fonctions.h"
+extern unsigned global_id;
 
 
 int main() {

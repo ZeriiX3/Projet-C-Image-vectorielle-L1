@@ -25,6 +25,7 @@ Point *create_point(int px, int py) {
 
 void delete_point(Point *p) {
     free(p);
+    p = NULL;
 }
 
 void print_point(Point * p) {
@@ -47,6 +48,9 @@ void delete_line(Line * line) {
     free(line->pt1);
     free(line->pt2);
     free(line);
+    line->pt1 = NULL;
+    line->pt2 = NULL;
+    line = NULL;
 }
 
 void print_line(Line * line) {
@@ -75,6 +79,8 @@ void print_square(Square * square) {
 void delete_square(Square * square) {
     free(square->topleft);
     free(square);
+    square->topleft = NULL;
+    square = NULL;
 }
 
 
@@ -93,6 +99,8 @@ Rectangle *create_rectangle(Point * point, int length, int width) {
 void delete_rectangle(Rectangle * rectangle) {
     free(rectangle->topleft);
     free(rectangle);
+    rectangle->topleft = NULL;
+    rectangle = NULL;
 }
 
 void print_rectangle(Rectangle * rectangle) {
@@ -116,6 +124,8 @@ Circle *create_circle(Point * center, int radius) {
 void delete_circle(Circle * circle) {
     free(circle->center);
     free(circle);
+    circle->center = NULL;
+    circle = NULL;
 }
 
 void print_circle(Circle * circle) {
@@ -126,14 +136,15 @@ void print_circle(Circle * circle) {
 
 // Structure Polygon - FONCTION
 
-Polygon *create_polygon(int n) {
+Polygon *create_polygon(int n, int *tab) {
     Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));
     polygon->n = n;
+    Point * x = (Point*) malloc(n*sizeof(Point));
 
     for (int i = 0; i < n; i++) {
-        polygon->points[i];
+        polygon->points[i]->pos_x = tab[2*i];
+        polygon->points[i]->pos_y = tab[2*i + 1];
     }
-
     return polygon;
 }
 
@@ -141,8 +152,10 @@ void delete_polygon(Polygon * polygon) {
 
     for (int i = 0; i < polygon->n; i++) {
         free(polygon->points[i]);
+        polygon->points[i]= NULL;
     }
     free(polygon);
+    polygon = NULL;
 }
 
 void print_polygon(Polygon * polygon) {
@@ -212,13 +225,13 @@ Shape *create_circle_shape(int px, int py, int radius) {
 }
 
 
-/*
-Shape *create_polygon_shape(int lst[], int n) {
-    Shape *shp = create_empty_shape(POLYGON);
 
+Shape *create_polygon_shape(int n, int *tab) {
+    Shape *shp = create_empty_shape(POLYGON);
+    Polygon *poly = create_polygon(n,tab);
     shp->ptrShape = poly;
     return shp;
-} */
+}
 
 
 void delete_shape(Shape *shape) {
@@ -255,6 +268,7 @@ void delete_shape(Shape *shape) {
         }
     }
     free(shape);
+
 }
 
 

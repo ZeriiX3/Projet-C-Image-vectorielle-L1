@@ -91,5 +91,5 @@ void add_cercle() {
     scanf("%d",&radius);
 
 
-    printf("Votre rectangle a ete ajoute !\n");
+    printf("Votre cercle a ete ajoute !\n");
 }

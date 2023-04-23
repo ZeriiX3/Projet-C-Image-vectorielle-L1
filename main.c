@@ -1,10 +1,12 @@
 #include "stdio.h"
 #include "shapes.h"
 #include "fonctions.h"
+#include "stdlib.h"
 extern unsigned global_id;
 
 
 int main() {
+    Shape **shape_list = (Shape **) malloc(100 * sizeof(Shape *));
 
     char choix_action, choix_forme;
 
@@ -28,7 +30,8 @@ int main() {
                             printf("Saisir les informations du point :\n");
                             printf(">> Saisir les coordonnees x y : ");
                             scanf("%d %d",&px, &py);
-                            Shape *create_point_shape(int px, int py);
+                            Point *p= (Point *) create_point_shape(px, py);
+                            shape_list[global_id - 1] = (Shape *) p;
 
                             printf("Votre point a ete ajoute !\n");;
                             break;
@@ -40,7 +43,8 @@ int main() {
                             scanf("%d %d",&px1, &py1);
                             printf(">> Saisir les coordonnees deuxieme point x2 y2 : ");
                             scanf("%d %d",&px2, &py2);
-                            Shape *create_line_shape(int px1, int py1, int px2, int py2);
+                            Line *l= (Point *)create_line_shape(px1,py1,px2, py2);
+                            shape_list[global_id - 1] = (Shape *) l;
 
 
                             printf("Votre ligne a ete ajoute !\n");;
@@ -53,7 +57,8 @@ int main() {
                             scanf("%d %d",&px, &py);
                             printf(">> Saisir la longueur des cotes du cube : ");
                             scanf("%d",&length);
-                            Shape *create_square_shape(int px, int py, int length);
+                            Square *s= (Point *)create_square_shape(px,py,length);
+                            shape_list[global_id - 1] = (Shape *) s;
 
 
                             printf("Votre cube a ete ajoute !\n");;
@@ -68,7 +73,8 @@ int main() {
                             scanf("%d",&length);
                             printf(">> Saisir la largeur du rectangle : ");
                             scanf("%d",&width);
-                            Shape *create_rectangle_shape(int px, int py, int length, int width);
+                            Rectangle *r= (Point *) create_rectangle_shape(px, py, length, width);
+                            shape_list[global_id - 1] = (Shape *) r;
 
 
                             printf("Votre rectangle a ete ajoute !\n");;
@@ -81,13 +87,29 @@ int main() {
                             scanf("%d %d",&px, &py);
                             printf(">>Saisir le rayon du cercle : ");
                             scanf("%d",&radius);
-                            Shape *create_circle_shape(int px, int py, int radus);
-
+                            Circle *c = (Point *) create_circle_shape(px, py, radius);
+                            shape_list[global_id - 1] = (Shape *) c;
 
                             printf("Votre cercle a ete ajoute !\n");;
                             break;
                         }
                         case '6': {
+                            int n, x;
+                            int * tab;
+                            printf("Saisir les informations du polygone: \n Saisir le nombre de points :" );
+                            scanf("%d", &n);
+
+                            tab = (int*) malloc(2 *n * sizeof (int));
+                            for (x=0 ; x< n; x++){
+                                printf(">> Saisir les coordonnees x y du point %d : ", x + 1 );
+                                scanf("%d %d", &tab[2*x], &tab[2*x+1]);
+
+                                Polygon *poly = (Point *) create_polygon_shape(n, tab);
+                                shape_list[global_id - 1] = (Shape *) poly;
+
+                                printf("Votre polygone a ete ajoute \n");
+
+                            }
                             break; // polygon
                         }
                         case '7': {
@@ -104,6 +126,14 @@ int main() {
             case 'B': {     // Afficher la liste des formes
 
                 printf("Liste des formes\n");
+
+                if (global_id == 0) {
+                    printf("La liste est vide \n");
+                }else{
+                    for (int x = 0; x < global_id; x++){
+                        print_shape(shape_list[x]);
+                    }
+                }
                 break;
             }
 
@@ -161,3 +191,4 @@ int main() {
 */
     return 0;
 }
+

@@ -1,7 +1,3 @@
-//
-// Created by sebxu on 13/04/2023.
-//
-
 #include "id.h"
 
 

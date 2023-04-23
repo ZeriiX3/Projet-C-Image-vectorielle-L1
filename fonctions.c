@@ -1,7 +1,3 @@
-//
-// Created by Seb on 11/04/2023.
-//
-
 #include "fonctions.h"
 #include "shapes.h"
 #include "stdio.h"
@@ -93,3 +89,5 @@ void add_cercle() {
 
     printf("Votre cercle a ete ajoute !\n");
 }
+
+

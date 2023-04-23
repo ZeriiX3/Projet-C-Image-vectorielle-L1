@@ -1,7 +1,3 @@
-//
-// Created by Seb on 01/04/2023.
-//
-
 #ifndef PROJET_VECTEUR_FONCTIONS_H
 #define PROJET_VECTEUR_FONCTIONS_H
 
@@ -110,5 +106,3 @@ Shape *create_circle_shape(int px, int py, int radus);
 Shape *create_polygon_shape(int n, int *tab);
 void delete_shape(Shape * shape);
 void print_shape(Shape * shape);
-
-

@@ -1,7 +1,3 @@
-//
-// Created by Seb on 01/04/2023.
-//
-
 #include "shapes.h"
 #include "id.h"
 #include "stdio.h"

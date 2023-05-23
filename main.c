@@ -8,7 +8,6 @@ Par Sébastien XU et Matthieu BACHELERIE */
 #include "shapes.h"
 #include "fonctions.h"
 #include <stdlib.h>
-#include "command.h"
 #include "area.h"
 
 extern unsigned global_id;

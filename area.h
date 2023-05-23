@@ -1,16 +1,26 @@
-//
-// Created by Seb on 23/05/2023.
-//
+/* Project C: Vector Text-based Editor
+Professeurs: Halim Djerroud, Fabien Calcado, Asma Gabis
+Mars - Mai / 2023
+
+Par Sébastien XU et Matthieu BACHELERIE */
 
 #ifndef PROJET_VECTEUR_AREA_H
 #define PROJET_VECTEUR_AREA_H
 
 
-
+// ************************************ IMPORT ************************************ //
 #define SHAPE_MAX 100 // Nombre maximum de formes
 #define BOOL int
-#include "shapes.h"
 
+#include "shapes.h"
+// ******************************************************************************** //
+
+
+
+
+// ----------------------------------------------- //
+// ------------------ Structure ------------------ //
+// ----------------------------------------------- //
 
 
 struct area {
@@ -23,6 +33,8 @@ struct area {
 typedef struct area Area;
 
 
+// Fonctions
+
 Area* create_area(unsigned int width, unsigned int height);
 void add_shape_to_area(Area* area, Shape* shape);
 void clear_area(Area* area);
@@ -32,13 +44,17 @@ void draw_area(Area* area);
 void print_area(Area* area);
 
 
-// PIXEL //
+// ----------------------------------------------- //
+// -------------------- PIXEL ---------------------//
+// ----------------------------------------------- //
 
 typedef struct pixel {
     int px;
     int py;
 }Pixel;
 
+
+// Fonctions //
 
 Pixel *create_pixel(int px, int py);
 void delete_pixel(Pixel * pixel);

@@ -1,48 +1,59 @@
+/* Project C: Vector Text-based Editor
+Professeurs: Halim Djerroud, Fabien Calcado, Asma Gabis
+Mars - Mai / 2023
+
+Par Sébastien XU et Matthieu BACHELERIE */
+
+
+
 #ifndef PROJET_VECTEUR_FONCTIONS_H
 #define PROJET_VECTEUR_FONCTIONS_H
 
 
-// ----------------- STRUCTURES ----------------- //
+// ---------------------------------- STRUCTURES ---------------------------------- //
 
 
 
-// Structure Point
+// Structure Point //
 
 typedef struct {
     int pos_x;
     int pos_y;
 }Point;
 
+// Fonctions
 Point *create_point(int px, int py);        // Alloue dynamiquement une variable de type structuré Point dont les coordonnées sont données en paramètres
 void delete_point(Point * p);               // Libère la mémoire alloué
-void print_point(Point * p);
+void print_point(Point * p);                // Affichage
 
 
-// Structure Line
+// Structure Line //
 
 typedef struct {
     Point *pt1;
     Point *pt2;
 }Line;
 
+// Fonctions
 Line *create_line(Point * p1, Point * p2);
 void delete_line(Line * line);
 void print_line(Line * line);
 
 
-// Structure Square
+// Structure Square //
 
 typedef struct {
     Point *topleft;
     int length;
 }Square;
 
+// Fonctions
 Square *create_square(Point * point, int length);
 void delete_square(Square * square);
 void print_square(Square * square);
 
 
-// Structure Rectangle
+// Structure Rectangle //
 
 typedef struct {
     Point *topleft;
@@ -50,31 +61,34 @@ typedef struct {
     int width;
 }Rectangle;
 
+// Fonctions
 Rectangle *create_rectangle(Point * point, int length, int width);
 void delete_rectangle(Rectangle * rectangle);
 void print_rectangle(Rectangle * rectangle);
 
 
-// Structure Cercle
+// Structure Cercle //
 
 typedef struct {
     Point *center;
     int radius;
 }Circle;
 
+// Fonctions
 Circle *create_circle(Point * center, int radius);
 void delete_circle(Circle * circle);
 void print_circle(Circle * circle);
 
 
 
-// Structure Polygon
+// Structure Polygon //
 
 typedef struct polygon {
     int n;
     Point ** points; // tableau 1D dynamique de Point*
 }Polygon;
 
+// Fonctions
 Polygon *create_polygon(int n,int *points);
 void delete_polygon(Polygon * polygon);
 void print_polygon(Polygon * polygon);
@@ -82,7 +96,7 @@ void print_polygon(Polygon * polygon);
 
 
 
-// ----------------- SHAPES ----------------- //
+// ---------------------------------- STRUCTURES SHAPES ---------------------------------- //
 
 
 
@@ -94,7 +108,7 @@ typedef struct shape {
     void *ptrShape;     // pointeur sur n'importe quelle forme
 }Shape;
 
-
+// Fonctions
 Shape *create_empty_shape(SHAPE_TYPE shape_type);
 Shape *create_point_shape(int px, int py);
 Shape *create_line_shape(int px1, int py1, int px2, int py2);

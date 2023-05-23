@@ -1,25 +1,35 @@
+/* Project C: Vector Text-based Editor
+Professeurs: Halim Djerroud, Fabien Calcado, Asma Gabis
+Mars - Mai / 2023
+
+Par Sébastien XU et Matthieu BACHELERIE */
+
+// ************************************ IMPORT ************************************ //
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "shapes.h"
 #include "id.h"
-#include "stdio.h"
-#include "stdlib.h"
+// ******************************************************************************** //
 
 
-// ----------------- STRUCTURES ----------------- //
-
+// -------------------------------------------------------------------------- //
+// ------------------------------- STRUCTURES ------------------------------- //
+// -------------------------------------------------------------------------- //
 
 
 // Structure Point - FONCTIONS
 
 
 Point *create_point(int px, int py) {
-    Point *p = (Point *)malloc(sizeof(Point));
+    Point *p = (Point *)malloc(sizeof(Point));      // Alloue de l'espace dynamiquement
     p->pos_x = px;
     p->pos_y = py;
     return p;
 }
 
 void delete_point(Point *p) {
-    free(p);
+    free(p);    // Libère de l'espace précédemment alloué
     p = NULL;
 }
 
@@ -33,13 +43,14 @@ void print_point(Point * p) {
 
 
 Line *create_line(Point * p1, Point * p2) {
-    Line * line = (Line*)malloc(sizeof(Line));
+    Line * line = (Line*)malloc(sizeof(Line));      // Alloue de l'espace dynamiquement
     line->pt1 = p1;
     line->pt2 = p2;
     return line;
 }
 
 void delete_line(Line * line) {
+    // Libère de l'espace précédemment alloué
     free(line->pt1);
     free(line->pt2);
     free(line);
@@ -57,7 +68,7 @@ void print_line(Line * line) {
 // Structure Square - FONCTIONS
 
 
-Square *create_square(Point * point, int length) {
+Square *create_square(Point * point, int length) {      // Alloue de l'espace dynamiquement
     Square *square = (Square*) malloc(sizeof(Square));
     square->topleft = point;
     square->length = length;
@@ -72,6 +83,7 @@ void print_square(Square * square) {
 }
 
 void delete_square(Square * square) {
+    // Libère de l'espace précédemment alloué
     free(square->topleft);
     free(square);
     square->topleft = NULL;
@@ -84,7 +96,7 @@ void delete_square(Square * square) {
 
 
 Rectangle *create_rectangle(Point * point, int length, int width) {
-    Rectangle *rectangle = (Rectangle *) malloc(sizeof(Rectangle));
+    Rectangle *rectangle = (Rectangle *) malloc(sizeof(Rectangle));     // Alloue de l'espace dynamiquement
     rectangle->topleft = point;
     rectangle->length = length;
     rectangle->width = width;
@@ -92,6 +104,7 @@ Rectangle *create_rectangle(Point * point, int length, int width) {
 }
 
 void delete_rectangle(Rectangle * rectangle) {
+    // Libère de l'espace précédemment alloué
     free(rectangle->topleft);
     free(rectangle);
     rectangle->topleft = NULL;
@@ -109,7 +122,7 @@ void print_rectangle(Rectangle * rectangle) {
 
 // Structure Rectangle - FONCTION
 
-Circle *create_circle(Point * center, int radius) {
+Circle *create_circle(Point * center, int radius) {     // Alloue de l'espace dynamiquement
     Circle *circle = (Circle *) malloc(sizeof(Circle));
     circle->center = center;
     circle->radius = radius;
@@ -117,6 +130,7 @@ Circle *create_circle(Point * center, int radius) {
 }
 
 void delete_circle(Circle * circle) {
+    // Libère de l'espace précédemment alloué
     free(circle->center);
     free(circle);
     circle->center = NULL;
@@ -132,9 +146,9 @@ void print_circle(Circle * circle) {
 // Structure Polygon - FONCTION
 
 Polygon *create_polygon(int n, int *points) {
-    Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));
+    Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));      // Alloue de l'espace dynamiquement
     polygon->n = n;
-    Point * x = (Point*) malloc(n*sizeof(Point));
+    Point * x = (Point*) malloc(n*sizeof(Point));       // Allocation de l'espace du tableau de points dynamiquement
 
     for (int i = 0; i < n; i++) {
         polygon->points[i]->pos_x = points[2 * i];
@@ -146,6 +160,7 @@ Polygon *create_polygon(int n, int *points) {
 void delete_polygon(Polygon * polygon) {
 
     for (int i = 0; i < polygon->n; i++) {
+        // Libère de l'espace précédemment alloué
         free(polygon->points[i]);
         polygon->points[i]= NULL;
     }
@@ -163,28 +178,40 @@ void print_polygon(Polygon * polygon) {
 
 
 
-// ----------------- SHAPES ----------------- //
+
+// -------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
+// --------------------------------- SHAPES --------------------------------- //
+// -------------------------------------------------------------------------- //
+// -------------------------------------------------------------------------- //
 
 
 
+// Création d'un Shape vide
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
-    Shape *shp = (Shape *) malloc(sizeof(Shape));
+    Shape *shp = (Shape *) malloc(sizeof(Shape));       // Alloue de l'espace dynamiquement
     shp->id = get_next_id(); // plus tard on appelera get_next_id();
     shp->shape_type = shape_type;
     shp->ptrShape = NULL;
     return shp;
 }
 
+
+// Structure SHAPE Point - FONCTION
+
 Shape *create_point_shape(int px, int py) {
 
-    Shape *shp = create_empty_shape(POINT);
+    Shape *shp = create_empty_shape(POINT);     // Ajoute le POINT de un SHAPE
     Point *p = create_point(px, py);
     shp->ptrShape = p;
     return shp;
 }
 
+
+// Structure SHAPE Line - FONCTION
+
 Shape *create_line_shape(int px1, int py1, int px2, int py2){
-    Shape *shp = create_empty_shape(LINE);
+    Shape *shp = create_empty_shape(LINE);      // Ajoute le LINE de un SHAPE
     Point * p1 = create_point (px1, py1);
     Point * p2 = create_point (px2, py2);
     Line * l = create_line(p1,p2);
@@ -193,16 +220,21 @@ Shape *create_line_shape(int px1, int py1, int px2, int py2){
 }
 
 
+// Structure SHAPE Square - FONCTION
+
 Shape *create_square_shape(int px, int py, int length) {
-    Shape *shp = create_empty_shape(SQUARE);
+    Shape *shp = create_empty_shape(SQUARE);        // Ajoute le SQUARE de un SHAPE
     Point * p = create_point(px,py);
     Square * s = create_square(p, length);
     shp->ptrShape = s;
     return shp;
 }
 
+
+// Structure SHAPE Rectangle - FONCTION
+
 Shape *create_rectangle_shape(int px, int py, int length, int width) {
-    Shape *shp = create_empty_shape(RECTANGLE);
+    Shape *shp = create_empty_shape(RECTANGLE);     // Ajoute le RECTANGLE de un SHAPE
     Point * p = create_point(px,py);
     Rectangle * r = create_rectangle(p, length, width);
 
@@ -210,8 +242,11 @@ Shape *create_rectangle_shape(int px, int py, int length, int width) {
     return shp;
 }
 
+
+// Structure SHAPE Circle - FONCTION
+
 Shape *create_circle_shape(int px, int py, int radius) {
-    Shape *shp = create_empty_shape(CIRCLE);
+    Shape *shp = create_empty_shape(CIRCLE);        // Ajoute le LINE de un SHAPE
     Point * p = create_point(px,py);
     Circle * c = create_circle(p,radius);
 
@@ -220,18 +255,24 @@ Shape *create_circle_shape(int px, int py, int radius) {
 }
 
 
+// Structure SHAPE Polygon - FONCTION
 
 Shape *create_polygon_shape(int n, int *tab) {
-    Shape *shp = create_empty_shape(POLYGON);
+    Shape *shp = create_empty_shape(POLYGON);       // Ajoute le POLYGON de un SHAPE
     Polygon *poly = create_polygon(n,tab);
     shp->ptrShape = poly;
     return shp;
 }
 
 
+
+// **************** Fonction permettant de libérer l'espace selon le SHAPE TYPE **************** //
+
+
 void delete_shape(Shape *shape) {
 
     switch (shape->shape_type) {
+
         case POINT: {
             delete_point((Point *)shape->ptrShape);
             break;
@@ -262,10 +303,12 @@ void delete_shape(Shape *shape) {
             break;
         }
     }
-    free(shape);
 
+    free(shape);
 }
 
+
+// **************** Fonction permettant de print la forme selon le SHAPE TYPE **************** //
 
 void print_shape(Shape * shape) {
 
@@ -302,6 +345,3 @@ void print_shape(Shape * shape) {
         }
     }
 }
-
-
-

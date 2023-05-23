@@ -1,7 +1,15 @@
+/* Project C: Vector Text-based Editor
+Professeurs: Halim Djerroud, Fabien Calcado, Asma Gabis
+Mars - Mai / 2023
+
+Par Sébastien XU et Matthieu BACHELERIE */
+
+
+// ************************************ IMPORT ************************************ //
 #include "fonctions.h"
 #include "shapes.h"
 #include "stdio.h"
-
+// ******************************************************************************** //
 
 
 // Affichage des menus
@@ -32,6 +40,9 @@ void menu_A() {
     printf("    7- Revenir au menu precedent\n");
     printf(">> Votre choix : ");
 }
+
+
+// Fonctions permettant de calculer le maximum et le minimum
 
 int min(int x, int y){
     if (x < y)

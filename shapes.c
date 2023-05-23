@@ -15,7 +15,6 @@ Point *create_point(int px, int py) {
     Point *p = (Point *)malloc(sizeof(Point));
     p->pos_x = px;
     p->pos_y = py;
-
     return p;
 }
 
@@ -132,14 +131,14 @@ void print_circle(Circle * circle) {
 
 // Structure Polygon - FONCTION
 
-Polygon *create_polygon(int n, int *tab) {
+Polygon *create_polygon(int n, int *points) {
     Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));
     polygon->n = n;
     Point * x = (Point*) malloc(n*sizeof(Point));
 
     for (int i = 0; i < n; i++) {
-        polygon->points[i]->pos_x = tab[2*i];
-        polygon->points[i]->pos_y = tab[2*i + 1];
+        polygon->points[i]->pos_x = points[2 * i];
+        polygon->points[i]->pos_y = points[2 * i + 1];
     }
     return polygon;
 }

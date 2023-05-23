@@ -1,8 +1,6 @@
 #ifndef PROJET_VECTEUR_FONCTIONS_H
 #define PROJET_VECTEUR_FONCTIONS_H
 
-#endif //PROJET_VECTEUR_FONCTIONS_H
-
 
 // ----------------- STRUCTURES ----------------- //
 
@@ -77,7 +75,7 @@ typedef struct polygon {
     Point ** points; // tableau 1D dynamique de Point*
 }Polygon;
 
-Polygon *create_polygon(int n,int *tab);
+Polygon *create_polygon(int n,int *points);
 void delete_polygon(Polygon * polygon);
 void print_polygon(Polygon * polygon);
 
@@ -107,3 +105,5 @@ Shape *create_polygon_shape(int n, int *tab);
 void delete_shape(Shape * shape);
 void print_shape(Shape * shape);
 void shape_list();
+
+#endif //PROJET_VECTEUR_FONCTIONS_H

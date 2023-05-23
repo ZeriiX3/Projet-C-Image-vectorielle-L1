@@ -8,14 +8,15 @@
 
 void main_menu() {
 
-    printf("START\n");
+    printf("Bienvenue dans le menu!\n\n");
     printf("Veuillez choisir une action :\n");
     printf("    A- Ajouter une forme\n");
     printf("    B- Afficher la liste des formes\n");
     printf("    C- Supprimer une forme de la liste\n");
     printf("    D- Tracer le dessin\n");
-    printf("    E- Aide\n");
-    printf("    F - Quitter le programme\n");
+    printf("    E- Effacer l'ecran\n");
+    printf("    F- Redimentionner l'ecran\n");
+    printf("    G- Quitter le programme\n");
     printf(">> Votre choix : ");
 }
 
@@ -28,65 +29,26 @@ void menu_A() {
     printf("    4- Ajouter un rectangle\n");
     printf("    5- Ajouter un cercle\n");
     printf("    6- Ajouter un polygone\n");
-    printf("    7- Revenir ua menu precedent\n");
+    printf("    7- Revenir au menu precedent\n");
     printf(">> Votre choix : ");
 }
 
-void add_point() {
-    int px, py;
-    printf("Saisir les informations du point :\n");
-    printf(">> Saisir les coordonnees x y : ");
-    scanf("%d %d",&px, &py);
-
-    printf("Votre point a ete ajoute !\n");
+int min(int x, int y){
+    if (x < y)
+    {
+        return x;
+    }
+    else
+    {
+        return y;
+    }
 }
 
-void add_line() {
-    int px1, py1, px2, py2;
-    printf("Saisir les informations pour la ligne :\n");
-    printf(">> Saisir les coordonnees du premier point x1 y1 : ");
-    scanf("%d %d",&px1, &py1);
-    printf(">> Saisir les coordonnees deuxieme point x2 y2 : ");
-    scanf("%d %d",&px2, &py2);
-
-    printf("Votre ligne a ete ajoute !\n");
+int max(int x, int y){
+    if (x > y){
+        return x;
+    }
+    else{
+        return y;
+    }
 }
-
-void add_square() {
-    int px, py, length;
-    printf("Saisir les informations pour le cube :\n");
-    printf(">> Saisir les coordonnees du point x y : ");
-    scanf("%d %d",&px, &py);
-    printf(">> Saisir la longueur des cotes du cube : ");
-    scanf("%d",&length);
-
-
-    printf("Votre cube a ete ajoute !\n");
-}
-
-void add_rectangle() {
-    int px, py, length, width;
-    printf("Saisir les informations pour le rectangle :\n");
-    printf(">> Saisir les coordonnees du point x y : ");
-    scanf("%d %d",&px, &py);
-    printf(">> Saisir la longueur du rectangle : ");
-    scanf("%d",&length);
-    printf(">> Saisir la largeur du rectangle : ");
-    scanf("%d",&width);
-
-
-    printf("Votre rectangle a ete ajoute !\n");
-}
-
-void add_cercle() {
-    int px, py, radius;
-    printf("Saisir les informations pour le cercle :\n");
-    printf(">> Saisir le point centre x y : ");
-    scanf("%d %d",&px, &py);
-    printf(">>Saisir le rayon du cercle : ");
-    scanf("%d",&radius);
-
-
-    printf("Votre cercle a ete ajoute !\n");
-}
-
